@@ -16,17 +16,24 @@
    * The format doesn't matter, as long as it contains the spell name, cost, and description.
    */
 
-  function Spell(name, cost, description){
+  var Spell = function (name, cost, description){
     this.name = name;
     this.cost = cost;
     this.description = description;
-  }
+    // this.getDetails;
+
+  };
+
+  Spell.prototype.getDetails = function() {
+    console.log(this.name + ", " + this.cost + ", " + this.description);
+    return this.name + ", " + this.cost + ", " + this.description;
+
+  };
 
   /**
    * @name getDetails
    * @return {string} details containing all of the spells information.
    */
-
 
 /**
  * A spell that deals damage.
