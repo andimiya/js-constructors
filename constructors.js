@@ -87,17 +87,6 @@
     this.isAlive = true;
   };
 
-  Spellcaster.prototype.inflictDamage = function() {
-    if (health === 0) {
-      isAlive = false;
-    }
-    else {
-      isAlive = true;
-    }
-  };
-
-
-
   /**
    * @method inflictDamage
    *
@@ -108,6 +97,15 @@
    *
    * @param  {number} damage  Amount of damage to deal to the spellcaster
    */
+
+  Spellcaster.prototype.inflictDamage = function() {
+    if (health === 0) {
+      isAlive = false;
+    }
+    else {
+      isAlive = true;
+    }
+  };
 
   /**
    * @method spendMana
