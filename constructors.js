@@ -80,9 +80,23 @@
  * @method  invoke
  */
 
-  var Spellcaster = function(name, health, mana){
-
+  var Spellcaster = function(name, health, mana, isAlive){
+    this.name = name;
+    this.health = health;
+    this.mana = mana;
+    this.isAlive = true;
   };
+
+  Spellcaster.prototype.inflictDamage = function() {
+    if (health === 0) {
+      isAlive = false;
+    }
+    else {
+      isAlive = true;
+    }
+  };
+
+
 
   /**
    * @method inflictDamage
