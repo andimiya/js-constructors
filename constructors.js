@@ -137,16 +137,19 @@
     }
 
     if(spell instanceof DamageSpell && target instanceof Spellcaster) {
-      if (this.mana > spell.cost) {
-        this.spendMana(spell.cost);
-        target.inflictDamage(spell.damage);
-        return true;
+      if (this.mana > spell.cost) {  //Does spellcaster have enough mana to cast the spell?
+        this.mana -= spell.cost; //If yes, lose mana equal to the spell's cost
+
+        if(spell instanceof DamageSpell) {
+          this.inflictDamage(spell.damage); //In addition, if it is a `DamageSpell` reduce the target's health by the spell's damage value.
+          console.log(this.health -= spell.damage);
+        }
+      return true; //If there is enough mana to cast the spell, return `true`.
       }
       else {
-        return false;
+        return false; //If there is not enough mana, return `false`.
       }
     }
-    return false;
   };
 
 
