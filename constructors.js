@@ -130,6 +130,36 @@
     }
   };
 
+
+  Spellcaster.prototype.invoke = function(spell, target) {
+
+    if(spell instanceof Spell) {
+
+      if (this.spendMana(spell.cost)) {
+        return true;
+      }
+        if (this.mana < spell.cost){
+        return false;
+      }
+      else {
+        return false;
+      }
+      return true;
+    }
+    if(spell instanceof DamageSpell && target instanceof Spellcaster) {
+      if (this.spendMana(spell.cost)) {
+        target.inflictDamage(spell.damage);
+        // return true;
+      }
+      else {
+        return false;
+      }
+      return true;
+    }
+  };
+
+
+
   /**
    * @method invoke
    *
