@@ -121,13 +121,13 @@
    */
 
   Spellcaster.prototype.spendMana = function(cost){
-    var totalMana = this.mana;
-    var mana = {};
-    if(cost < totalMana){
-      totalMana = mana - cost;
+    if (this.mana < cost) {
+      return false;
+    }
+    else {
+      this.mana -= cost;
       return true;
     }
-
   };
 
   /**
