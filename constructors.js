@@ -61,7 +61,9 @@
   this.damage = damage;
  };
 
- // DamageSpell.prototype = Spell;
+
+ DamageSpell.prototype = Object.create(Spell.prototype);
+
 
 /**
  * Now that you've created some spells, let's create
@@ -98,12 +100,19 @@
    * @param  {number} damage  Amount of damage to deal to the spellcaster
    */
 
-  Spellcaster.prototype.inflictDamage = function() {
-    if (health === 0) {
+
+  Spellcaster.prototype.inflictDamage = function(damage) {
+    var health = this.health;
+
+    console.log(this.health, 'health');
+    console.log(damage, 'damage');
+
+    if (health <= 0) {
       isAlive = false;
+      console.log(isAlive);
     }
     else {
-      isAlive = true;
+      health = health - damage;
     }
   };
 
@@ -116,6 +125,16 @@
    * @param  {number} cost      The amount of mana to spend.
    * @return {boolean} success  Whether mana was successfully spent.
    */
+
+  Spellcaster.prototype.spendMana = function(cost){
+    var totalMana = this.mana;
+    var mana = {};
+    if(cost < totalMana){
+      totalMana = mana - cost;
+      return true;
+    }
+
+  };
 
   /**
    * @method invoke
