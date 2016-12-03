@@ -102,17 +102,11 @@
 
 
   Spellcaster.prototype.inflictDamage = function(damage) {
-    var health = this.health;
+    this.health -= damage;
 
-    console.log(this.health, 'health');
-    console.log(damage, 'damage');
-
-    if (health <= 0) {
-      isAlive = false;
-      console.log(isAlive);
-    }
-    else {
-      health = health - damage;
+    if(this.health <= 0) {
+      this.health = 0;
+      this.isAlive = false;
     }
   };
 
